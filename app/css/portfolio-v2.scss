@@ -352,3 +352,352 @@ html.theme-wipe main > * { background-color: transparent !important; background-
   .menu-overlay,
   .menu-overlay nav a { animation: none !important; transition-duration: .01ms !important; }
 }
+
+/* Mobile-first finishing layer, tuned around the 393 x 852 px iPhone 16 viewport. */
+@media (max-width: 700px) {
+  :root {
+    --mobile-gutter: clamp(18px, 5.1vw, 22px);
+  }
+
+  html {
+    scroll-padding-top: calc(72px + env(safe-area-inset-top));
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-width: 0;
+    font-size: 16px;
+  }
+
+  main :where(section, div, article, header, footer, figure) { min-width: 0; }
+  main :where(h1, h2, h3, p, li, a, span) { overflow-wrap: anywhere; }
+  img { max-width: 100%; }
+
+  main {
+    padding-top: calc(70px + env(safe-area-inset-top));
+  }
+
+  .section,
+  .hero,
+  .page-hero {
+    padding-inline: max(var(--mobile-gutter), env(safe-area-inset-left));
+  }
+
+  .section {
+    padding-top: 68px;
+    padding-bottom: 68px;
+  }
+
+  .section-index,
+  .eyebrow {
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: .09em;
+  }
+
+  /* Compact, thumb-friendly header. */
+  .nav-shell {
+    height: calc(70px + env(safe-area-inset-top));
+    padding-top: env(safe-area-inset-top);
+    padding-inline: max(12px, env(safe-area-inset-left)) max(12px, env(safe-area-inset-right));
+    gap: 8px;
+  }
+
+  .brand { flex: 0 0 auto; gap: 0; }
+  .brand-image { width: 42px; height: 42px; }
+  .site-controls { min-width: 0; margin-inline-start: auto; gap: 5px; }
+  .locale-switch { min-height: 42px; padding: 3px; gap: 1px; display: flex; border-radius: 24px; }
+  .locale-switch button { width: 30px; height: 34px; padding: 0; font-size: 9px; }
+  .theme-toggle { width: 42px; height: 42px; flex: 0 0 42px; font-size: 17px; }
+  .menu-trigger { width: 64px; height: 42px; flex: 0 0 64px; }
+  .menu-trigger span { font-size: 10px; }
+  .menu-trigger i { left: 21px; top: 19px; }
+
+  /* Full-screen menu that remains useful on short phones. */
+  .menu-overlay { overscroll-behavior: contain; }
+  .menu-overlay nav {
+    min-height: 100%;
+    padding: calc(82px + env(safe-area-inset-top)) var(--mobile-gutter) calc(28px + env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+  }
+  .menu-overlay nav a {
+    min-height: 52px;
+    grid-template-columns: 28px minmax(0, 1fr) 34px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    font-size: clamp(26px, 8.2vw, 34px);
+    line-height: 1;
+    letter-spacing: -.055em;
+  }
+  .menu-overlay nav a:hover,
+  .menu-overlay nav a.active { padding-inline: 14px; }
+  .menu-overlay nav a b { width: 32px; height: 32px; }
+  .menu-overlay nav a b:before,
+  .menu-overlay nav a b:after { width: 11px; }
+  .menu-close {
+    top: calc(14px + env(safe-area-inset-top));
+    right: max(14px, env(safe-area-inset-right));
+    min-width: 92px;
+    height: 42px;
+  }
+
+  /* Heroes: readable at 393 px without clipping or giant empty areas. */
+  .hero {
+    min-height: auto;
+    padding-top: 42px;
+    padding-bottom: 64px;
+  }
+  .hero-grid { gap: 36px; }
+  .hero h1 {
+    max-width: 100%;
+    margin-block: 12px 20px;
+    font-size: clamp(50px, 15vw, 64px);
+    line-height: .88;
+    overflow-wrap: anywhere;
+  }
+  .hero-kicker { font-size: 11px; }
+  .hero-summary { width: 100%; margin: 0; font-size: 16px; line-height: 1.6; }
+  .hero-actions { width: 100%; margin: 24px 0 0; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .portrait-wrap { width: min(100%, 340px); margin-top: 4px; }
+  .portrait-frame { aspect-ratio: 4 / 5; }
+  .status-card { max-width: calc(100% - 14px); padding: 13px 16px; }
+
+  .page-hero {
+    min-height: auto;
+    padding-top: 54px;
+    padding-bottom: 70px;
+    justify-content: flex-start;
+  }
+  .page-hero .section-index { margin-bottom: 30px; }
+  .page-hero-grid { gap: 22px; }
+  .page-hero h1 {
+    max-width: 100%;
+    font-size: clamp(43px, 13.2vw, 57px);
+    line-height: .91;
+    letter-spacing: -.065em;
+    overflow-wrap: anywhere;
+  }
+  .page-hero-grid > p { margin: 0; font-size: 16px; line-height: 1.58; }
+  .page-hero:after { width: 86vw; right: -58vw; top: 10%; }
+  .scroll-cue { position: static; margin-top: 32px; font-size: 10px; }
+
+  /* Consistent type scale across all page sections. */
+  .home-statement h2,
+  .section-heading h2,
+  .intro h2,
+  .journey h2,
+  .contact h2,
+  .story-copy h2,
+  .profile-facts h2,
+  .capability-page > h2,
+  .chess-feature h2,
+  .community-cta h2,
+  .homelab-bridge h2,
+  .homelab-proof-copy h2,
+  .homelab-section-heading h2,
+  .repair-section h2,
+  .process-heading h2 {
+    font-size: clamp(38px, 11.5vw, 50px);
+    line-height: .97;
+    overflow-wrap: anywhere;
+  }
+  .home-statement h2 { margin-block: 32px; }
+  .contact h2 { margin-top: 22px; }
+  .contact-grid,
+  .section-heading,
+  .intro-columns { gap: 26px; }
+
+  /* Dense but breathable lists and cards. */
+  .project-card { padding: 24px 0; gap: 16px; }
+  .project-main h3 { font-size: clamp(28px, 9vw, 38px); overflow-wrap: anywhere; }
+  .project-main > span,
+  .archive-description,
+  .timeline p,
+  .community-grid p,
+  .facts-grid p,
+  .capability-grid p { font-size: 16px; line-height: 1.6; }
+  .project-meta { gap: 14px; }
+
+  .archive-intro { margin-bottom: 32px; }
+  .archive-grid { gap: 14px; }
+  .archive-card {
+    min-height: 0;
+    padding: 22px;
+    border-radius: 18px;
+  }
+  .archive-visual {
+    height: 142px;
+    margin: 18px 0 4px;
+    border-radius: 13px;
+  }
+  .archive-visual.is-contain img { padding: 14px; }
+  .archive-card > p:not(.archive-description) { margin: 19px 0 10px; }
+  .archive-card h2 { font-size: clamp(30px, 9.5vw, 40px); line-height: 1.02; overflow-wrap: anywhere; }
+  .archive-card .archive-description { font-size: 16px; }
+  .tag-row { margin: 20px 0; gap: 6px; }
+  .tag-row span { padding: 7px 9px; font-size: 9px; }
+  .archive-footer { gap: 18px; align-items: flex-end; }
+  .archive-footer span { text-align: end; }
+
+  .process-heading { gap: 18px; margin-bottom: 30px; }
+  .process-grid { gap: 10px; background: transparent; }
+  .process-grid article { min-height: 0; padding: 24px; border: 1px solid rgba(255,255,255,.14); border-radius: 16px; }
+  .process-grid h3 { margin: 30px 0 10px; }
+
+  .facts-grid,
+  .capability-grid,
+  .community-grid { gap: 10px; background: transparent; }
+  .facts-grid article,
+  .capability-grid article,
+  .community-grid article { min-height: 0; padding: 24px; border-radius: 16px; }
+  .facts-grid h3,
+  .community-grid h3 { margin-top: 30px; }
+  .capability-logos { gap: 8px; }
+  .capability-logo { min-width: 72px; padding: 11px 8px 9px; }
+  .capability-logo img { width: 36px; height: 36px; }
+
+  .profile-story { gap: 34px; }
+  .profile-image { min-height: 390px; border-radius: 18px; overflow: hidden; }
+  .story-copy > p:not(.section-index) { font-size: 16px; line-height: 1.68; }
+  .journey-page { gap: 36px; }
+  .timeline article { padding-block: 24px; }
+  .chess-feature { gap: 28px; }
+  .giant-knight { font-size: min(55vw, 210px); line-height: .9; }
+  .chess-feature .lead { font-size: 18px; }
+  .community-cta { gap: 26px; }
+
+  /* Homelab cards no longer waste half a screen each. */
+  .homelab-proof,
+  .repair-section { gap: 36px; }
+  .homelab-section-heading { gap: 18px; margin-bottom: 32px; }
+  .homelab-page-grid { gap: 14px; }
+  .homelab-card {
+    min-height: 0 !important;
+    padding: 22px !important;
+    border-radius: 18px;
+  }
+  .homelab-card-top { min-height: 42px; }
+  .service-logo-cluster { gap: 6px; }
+  .service-logo-cluster > span { width: 36px; height: 36px; border-radius: 10px; }
+  .service-logo-cluster img { width: 22px; height: 22px; }
+  .homelab-card-visual { height: 152px; margin-top: 16px; border-radius: 13px; }
+  .homelab-card h2 { margin: 20px 0 10px !important; font-size: clamp(28px, 9vw, 38px) !important; }
+  .homelab-card p { margin-bottom: 18px; font-size: 16px; line-height: 1.58; }
+  .homelab-card > b { margin-top: 18px; }
+  .homelab-public-gallery { gap: 10px; }
+  .proof-facts span { padding: 15px; }
+  .repair-list { gap: 10px; background: transparent; }
+  .repair-list article { min-height: 0; padding: 22px; border-radius: 14px; }
+  .repair-list h3 { margin-top: 28px; }
+
+  /* Project and homelab details become native-feeling bottom sheets. */
+  .project-detail-backdrop {
+    place-items: end center;
+    padding: 12px 0 0;
+    padding-top: max(12px, env(safe-area-inset-top));
+    backdrop-filter: blur(8px);
+  }
+  .project-detail.project-case-study,
+  .project-detail.homelab-detail {
+    width: 100%;
+    max-height: calc(100dvh - max(12px, env(safe-area-inset-top)));
+    border-radius: 24px 24px 0 0;
+    overscroll-behavior: contain;
+    box-shadow: 0 -18px 70px rgba(0,0,0,.55);
+  }
+  .project-detail-close {
+    position: sticky;
+    top: 12px;
+    width: 44px;
+    height: 44px;
+    margin: 12px 12px -56px 0;
+    font-size: 27px;
+  }
+  .case-study-hero {
+    gap: 24px;
+    padding: 72px var(--mobile-gutter) 30px;
+  }
+  .case-study-media { order: -1; }
+  .case-study-media img,
+  .project-symbol { aspect-ratio: 16 / 10; border-radius: 14px; }
+  .case-study-media.is-contain img { padding: 22px; }
+  .case-study-copy h2,
+  .homelab-detail-copy h2 {
+    margin: 14px 0 16px;
+    font-size: clamp(38px, 11.5vw, 50px);
+    line-height: .96;
+    overflow-wrap: anywhere;
+  }
+  .case-study-copy > p:not(.section-index),
+  .homelab-detail-copy > p { font-size: 16px; line-height: 1.62; }
+  .repository-proof { font-size: 10px; line-height: 1.5; }
+  .case-study-body section { min-height: 0; padding: 28px var(--mobile-gutter); }
+  .case-study-body h3 { margin: 20px 0 12px; font-size: 28px; }
+  .case-study-body p,
+  .case-study-body li { font-size: 16px; line-height: 1.58; }
+  .tech-logo { min-height: 46px; padding: 7px 11px; }
+  .case-study-footer { padding: 20px var(--mobile-gutter) calc(20px + env(safe-area-inset-bottom)); }
+  .case-study-actions,
+  .case-study-actions .button { width: 100%; }
+  .case-study-actions .button { justify-content: center; text-align: center; }
+
+  .homelab-detail-layout { min-height: 0; }
+  .homelab-detail-copy { padding: 72px var(--mobile-gutter) 30px; }
+  .homelab-detail-copy h3 { margin: 26px 0 12px; }
+  .homelab-detail-list { gap: 7px; margin: 20px 0; }
+  .homelab-detail-list span { padding: 8px 11px; font-size: 13px; }
+  .homelab-detail-media { padding: 22px var(--mobile-gutter) calc(28px + env(safe-area-inset-bottom)); }
+  .homelab-detail-media > img { max-height: none; aspect-ratio: 4 / 3; border-radius: 14px; }
+
+  /* Contact elements and buttons stay inside the viewport. */
+  .email-display {
+    padding-bottom: 22px;
+    font-size: clamp(32px, 10.2vw, 44px);
+    line-height: 1;
+    overflow-wrap: anywhere;
+  }
+  .email-display span { float: none; display: block; margin-top: 12px; font-size: 18px; }
+  .contact-details { gap: 26px; margin-top: 42px; }
+  .contact-details > p { font-size: 16px; }
+  .contact-form { gap: 18px; margin-top: 48px; padding-top: 36px; }
+  .contact-form input,
+  .contact-form textarea { min-height: 48px; font-size: 16px; }
+  .button { min-height: 48px; padding: 14px 18px; }
+
+  footer {
+    padding-inline: max(var(--mobile-gutter), env(safe-area-inset-left));
+    padding-bottom: calc(28px + env(safe-area-inset-bottom));
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 700px) and (hover: none) {
+  .archive-card:hover,
+  .homelab-card:hover,
+  .process-grid article:hover,
+  .community-grid article:hover,
+  .facts-grid article:hover,
+  .capability-grid article:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .archive-card,
+  .homelab-card,
+  .menu-trigger,
+  .theme-toggle,
+  .locale-switch button,
+  .button { touch-action: manipulation; }
+}
+
+@media (max-width: 370px) {
+  .brand-image { width: 38px; height: 38px; }
+  .locale-switch button { width: 27px; }
+  .theme-toggle { width: 39px; flex-basis: 39px; }
+  .menu-trigger { width: 58px; flex-basis: 58px; }
+  .menu-trigger i { left: 18px; }
+  .page-hero h1 { font-size: clamp(40px, 12.8vw, 48px); }
+}
