@@ -9,6 +9,7 @@ const logoFiles = {
   "C++": "cplusplus.svg", Python: "python.svg", Linux: "linux.svg", Docker: "docker.svg",
   "C#": "csharp.svg", WPF: "dotnet.svg", ".NET": "dotnet.svg", PHP: "php.svg", MySQL: "mysql.svg",
   PostgreSQL: "postgresql.svg", MongoDB: "mongodb.svg", "HTML/CSS": "html5.svg",
+  OpenOrbis: "openorbis.png",
 };
 
 const interfaceCopy = {
