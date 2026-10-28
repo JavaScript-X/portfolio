@@ -42,7 +42,6 @@ export default function Navbar() {
     window.setTimeout(() => document.documentElement.classList.remove("theme-wipe"), 1250);
   };
 
-  useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     const onKeyDown = event => event.key === "Escape" && setOpen(false);
@@ -70,7 +69,7 @@ export default function Navbar() {
     <div id="site-menu" className={`menu-overlay ${open ? "is-open" : ""}`} aria-hidden={!open}>
       <button type="button" className="menu-close" onClick={closeMenu} aria-label={ui[locale].close}><span aria-hidden="true">×</span>{ui[locale].close}</button>
       <nav aria-label={ui[locale].menu}>
-        {routes.map((href, index) => <Link className={pathname === href ? "active" : ""} aria-current={pathname === href ? "page" : undefined} onClick={pathname === href ? closeMenu : undefined} href={href} key={href} style={{ "--delay": `${index * 45}ms` }}><span>0{index + 1}</span>{nav[index]}<b aria-hidden="true">+</b></Link>)}
+        {routes.map((href, index) => <Link className={pathname === href ? "active" : ""} aria-current={pathname === href ? "page" : undefined} onClick={closeMenu} href={href} key={href} style={{ "--delay": `${index * 45}ms` }}><span>0{index + 1}</span>{nav[index]}<b aria-hidden="true">+</b></Link>)}
       </nav>
       <div className="menu-meta"><span>Engineering · Full stack · Security · Homelab</span><div><a href="https://github.com/JavaScript-X" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/tahar-chtioui/" target="_blank" rel="noreferrer">LinkedIn</a></div></div>
     </div>
