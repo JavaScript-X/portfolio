@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 460">
+  <defs>
+    <clipPath id="round-logo">
+      <circle cx="230" cy="230" r="224" />
+    </clipPath>
+  </defs>
+  <image
+    href="/brand-logo.png"
+    width="460"
+    height="460"
+    preserveAspectRatio="xMidYMid slice"
+    clip-path="url(#round-logo)"
+  />
+</svg>
